@@ -24,15 +24,12 @@ async function loadTabs() {
 
 		tabsArray.forEach(tab => {
 
-			//  console.log(`Tab: ${tab.title}, RAM: ${memoryMB} MB`);
-
 			const titleSpan = document.createElement("span");
 
 			const li = document.createElement("li");
 			const minutesAgo = Math.floor((Date.now() - tab.lastVisit) / 60000);
 			const hour = Math.floor(minutesAgo / 60);
 			const min = minutesAgo % 60
-			//li.textContent = `${tab.title.substring(0,50)} (${hour} saat ${min} dk önce ziyaret edildi)`;
 			li.className = "list-group-item d-flex justify-content-between align-items-center";
 
 			const btnClose = document.createElement("button");
@@ -42,7 +39,6 @@ async function loadTabs() {
 
 				const beforeTabClose = availableGB;
 				chrome.tabs.remove(tab.id);
-				//memoryInfo()
 
 				const afterTabClose = availableGB;
 
@@ -70,27 +66,11 @@ async function loadTabs() {
 	})
 	document.addEventListener("DOMContentLoaded", () => {
 		updateMemoryInfo();
-		//memoryInfo()
 
 		chrome.tabs.onRemoved.addListener(() => {
    		 setTimeout(updateMemoryInfo, 1000);
   });
 	});
-
-	//function memoryInfo() {
-//
-//	const memDiv = document.getElementById("memoryInfo");
-//
-//	if (chrome.system && chrome.system.memory) {
-//		chrome.system.memory.getInfo((info) => {
-//			totalGB = (info.capacity / 1024 / 1024 / 1024).toFixed(2);
-//			availableGB = (info.availableCapacity / 1024 / 1024 / 1024).toFixed(2);
-//			memDiv.textContent = `Toplam RAM : ${totalGB} GB, Kullanılabilir RAM: ${availableGB} GB`;
-//		});
-//	} else {
-//		memDiv.textContent = "RAM bilgisi alınamadı";
-//	}
-//}
 }
 loadTabs();
 chrome.runtime.onMessage.addListener((msg) => {
