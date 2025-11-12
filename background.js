@@ -51,7 +51,7 @@ chrome.tabs.onRemoved.addListener((tabId) => {
         delete tabsLastVisit[tabId];
         chrome.storage.local.set({ tabsLastVisit });
     });
-	  chrome.runtime.sendMessage({ action: "tabClosed" });
+	  chrome.runtime.sendMessage({ action: "tabClosed" }).catch(err => console.log("Popup kapalı, mesaj gönderilemedi."));
 });
 
 

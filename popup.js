@@ -111,7 +111,7 @@ function updateMemoryInfo() {
 		const ramAlert = document.getElementById("ramAlert");
 		const freeRatio = (info.availableCapacity / info.capacity) * 100;
 
-		if (freeRatio < 40) {
+		if (freeRatio < 10) {
 			ramAlert.textContent = `⚠️ Sistem belleği kritik seviyede (%${freeRatio.toFixed(1)} boş). Kullanılmayan sekmeleri kapat!`;
 			ramAlert.classList.add("alert-danger");
 			ramAlert.classList.remove("d-none","alert-warning");
