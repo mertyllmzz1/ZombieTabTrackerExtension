@@ -6,7 +6,6 @@
   "permissions": [
     "tabs",
     "storage",
-    "processes",
     "system.memory"
   ],
   "action": {
