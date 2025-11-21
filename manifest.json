@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ZombieTabTrackerExtension",
-  "version": "1.0",
+  "version": "1.01",
   "description": "Sekmelerin son ziyaret zamanını takip eder.",
   "permissions": [
     "tabs",

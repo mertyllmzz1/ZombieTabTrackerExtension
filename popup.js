@@ -34,7 +34,7 @@ async function loadTabs() {
 
 			const btnClose = document.createElement("button");
 			btnClose.textContent = "Sekmeyi kapat";
-			btnClose.className = "btn btn-danger btn-sm";
+			btnClose.className = "btn btn-danger btn-md btn-flex";
 			btnClose.addEventListener('click', () => {
 
 				const beforeTabClose = availableGB;
@@ -45,10 +45,10 @@ async function loadTabs() {
 			});
 			const btnFocus = document.createElement("button");
 			btnFocus.textContent = "Sekmeye git";
-			btnFocus.className = "btn btn-success btn-sm";
+			btnFocus.className = "btn btn-success btn-md btn-flex";
 			btnFocus.addEventListener('click', () => {
 				chrome.tabs.update(tab.id, { active: true });        // Sekmeyi aktif yap
-				chrome.windows.update(tab.windowId, { focused: true })
+				//chrome.windows.update(tab.windowId, { focused: true })
 			}
 			);
 
@@ -103,8 +103,13 @@ function updateMemoryInfo() {
 			ramAlert.classList.remove("alert-danger","alert-danger");
 			ramAlert.classList.add("d-none");
 		}
+		updateRamUsage(freeRatio)
 	});
 }
 function bytesToGB(bytes) {
 	return (bytes / 1024 / 1024 / 1024).toFixed(2);
+}
+
+function updateRamUsage(freeRatio) {
+    document.getElementById("ram-bar").style.width = 100-freeRatio + "%";
 }

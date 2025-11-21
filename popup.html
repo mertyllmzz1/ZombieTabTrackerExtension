@@ -6,13 +6,19 @@
   <title>Zombie Tab Tracker</title>
 
 
- <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      width: 400px;
-      max-width: 600px;
-      padding: 10px;
+      background: #f8fafc;
+      font-family: "Segoe UI", sans-serif;
+      width: 440px;
+      padding: 15px;
+    }
+
+    .card-custom {
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     }
 
     ul {
@@ -42,20 +48,65 @@
       /* Maksimum genişlik */
       padding: 2px 5px;
       /* Dikey-yatay padding */
-      font-size: 8px !important;
+      font-size: 10px !important;
       /* Yazı boyutu */
     }
+
+    .btn-green {
+      background: #10b981;
+      color: white;
+      margin-right: 2% !important;
+      margin-left: 1% !important;
+
+    }
+
+   .btn-flex {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+
+    padding: 6px 14px !important;
+    height: 36px !important;
+
+    line-height: normal !important;   /* EN KRİTİK NOKTA */
+        margin-right: 2% !important;
+      margin-left: 1% !important;
+}
+
+    .btn-red {
+      background: #ef4444;
+      color: white;
+  
+
+    }
+        .ram-bar-bg {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .ram-bar-used {
+            height: 8px;
+            background: #ea580c;
+            border-radius: 4px;
+        }
+
   </style>
 </head>
 
 <body>
   <h2>💀 Zombie Tab Tracker </h2>
-    <div id="ramAlert" class="alert alert-warning d-none p-2" role="alert"></div>
-   <div class="card mb-2 p-2">
-      <p><strong>Toplam RAM:</strong> <span id="totalRam"></span></p>
-      <p><strong>Kullanılabilir RAM:</strong> <span id="freeRam"></span></p>
-    </div>
- 
+  <div id="ramAlert" class="alert alert-warning d-none p-2" role="alert"></div>
+  <div class=" card-custom mb-2 p-2">
+    <p><strong>Toplam RAM:</strong> <span id="totalRam"></span></p>
+    <p><strong>Kullanılabilir RAM:</strong> <span id="freeRam"></span></p>
+    <div class="ram-bar-bg mt-3">
+            <div id="ram-bar" class="ram-bar-used" ></div>
+        </div>
+  </div>
+
   <ul id="tabList" class=" list-group"> </ul>
   <script src="popup.js"></script>
 
